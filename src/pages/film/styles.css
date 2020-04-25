@@ -33,7 +33,7 @@
   transition: all 0.2s;
 }
 
-.film-info a:hover:enabled {
+.film-info a:hover {
   background: #da552f;
   color: #fff;
 }
