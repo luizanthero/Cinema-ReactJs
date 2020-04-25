@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import api from "../../services/Api";
+import { Link } from "react-router-dom";
 
 import "./styles.css";
 
@@ -23,6 +24,8 @@ export default class Film extends Component {
       <div className="film-info">
         <h1>{film.Name}</h1>
         <p>{film.ApiCode}</p>
+
+        <Link to="/">Voltar</Link>
       </div>
     );
   }
