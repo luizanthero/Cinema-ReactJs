@@ -17,6 +17,31 @@ body {
   padding: 0 20px;
 }
 
+.film-list {
+  max-width: 1000px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+}
+
+.film-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search[type="text"] {
+  width: 80%;
+  box-sizing: border-box;
+  border: 2px solid #da552f;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  margin-bottom: 30px;
+}
+
 /*#region [Show Boxes]*/
 .show-box {
   background: #fff;
@@ -76,6 +101,59 @@ body {
 }
 /*#endregion*/
 
+/*#region [Show Box Film]*/
+.film-list .show-film {
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.show-box-film {
+  width: 31%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 11px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.show-box-film div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.show-box-film div strong {
+  margin-bottom: 15px;
+}
+
+.show-box-film .poster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.show-box-film .poster img {
+  max-height: 380px;
+}
+
+.show-box-film .film-info-short {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.show-box-film .film-info-short p {
+  font-size: 15px;
+  color: #999;
+  margin-top: 5px;
+  line-height: 24px;
+  margin: 5px;
+}
+/*#endregion*/
 /*#endregion*/
 
 /*#region [Containers]*/

@@ -29,6 +29,8 @@ export default class Main extends Component {
 
     const pageNumber = page - 1;
 
+    this.setState({ page: pageNumber });
+
     this.loadFilms(pageNumber);
   };
 
@@ -39,6 +41,8 @@ export default class Main extends Component {
 
     const pageNumber = page + 1;
 
+    this.setState({ page: pageNumber });
+
     this.loadFilms(pageNumber);
   };
 
@@ -47,7 +51,7 @@ export default class Main extends Component {
 
     return (
       <div className="entity-list">
-        <Link className="button button-default button-add">
+        <Link to="/searchfilms" className="button button-default button-add">
           Adicionar novo Filme
         </Link>
         {films.map((film) => (
