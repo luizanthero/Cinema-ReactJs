@@ -1,0 +1,22 @@
+ul#main-menu {
+  width: 15%;
+  height: 100%;
+  background: #da552f;
+  overflow: hidden;
+  position: fixed;
+  z-index: 1;
+}
+
+ul#main-menu a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+}

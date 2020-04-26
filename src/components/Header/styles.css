@@ -6,6 +6,12 @@ header#main-header {
   font-weight: bold;
   color: #fff;
   display: flex;
-  justify-content: center;
   align-items: center;
+}
+
+header#main-header .active {
+}
+
+header#main-header button {
+  margin: 10px;
 }
