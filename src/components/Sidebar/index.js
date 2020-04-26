@@ -1,21 +1,25 @@
-import React from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import "./styles.css";
 
-const Sidebar = () => (
-  <ul id="main-menu">
-    <li>
-      <a href="teste.html">CineAPI</a>
-    </li>
-    <li>
-      <a href="teste.html">Filmes</a>
-    </li>
-    <li>
-      <a href="teste.html">Salas</a>
-    </li>
-    <li>
-      <a href="teste.html">Telas</a>
-    </li>
-  </ul>
-);
-
-export default Sidebar;
+export default class Sidebar extends Component {
+  render() {
+    return (
+      <ul id="main-menu">
+        <li>
+          <Link to="/">CineAPI</Link>
+        </li>
+        <li>
+          <Link to="/films">Filmes</Link>
+        </li>
+        <li>
+          <Link to="/rooms">Salas</Link>
+        </li>
+        <li>
+          <Link to="/screens">Telas</Link>
+        </li>
+      </ul>
+    );
+  }
+}

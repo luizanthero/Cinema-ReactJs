@@ -11,17 +11,32 @@ export default class Header extends Component {
     isActive: false,
   };
 
+  handleOpenMenu = () => {
+    const { isActive } = this.state;
+
+    if (isActive) {
+      this.setState({ isActive: false });
+    } else {
+      this.setState({ isActive: true });
+    }
+  };
+
   render() {
+    const { isActive } = this.state;
+
     return (
       <>
         <header id="main-header">
-          <IconButton edge="start" color="inherit" aria-label="menu">
+          <IconButton
+            onClick={this.handleOpenMenu}
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+          >
             <MenuIcon />
           </IconButton>
         </header>
-        <>
-          <Sidebar />
-        </>
+        <>{isActive ? <Sidebar /> : ""}</>
       </>
     );
   }

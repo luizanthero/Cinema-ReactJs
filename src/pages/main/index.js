@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import api from "../../services/Api";
 import { Link } from "react-router-dom";
 
 import "./styles.css";
+
+import cineApi from "../../services/CineApi";
 
 export default class Main extends Component {
   state = {
@@ -16,7 +17,7 @@ export default class Main extends Component {
   }
 
   loadFilms = async (page = 1) => {
-    const response = await api.get("/films/" + page + "/10");
+    const response = await cineApi.get("/films/" + page + "/10");
 
     const { data, ...filmInfo } = response.data;
 

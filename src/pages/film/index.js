@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import api from "../../services/Api";
-import apiOmdb from "../../services/Omdb-Api";
 import { Link } from "react-router-dom";
 
 import "./styles.css";
+
+import cineAPi from "../../services/CineApi";
+import apiOmdb from "../../services/Omdb-Api";
 
 export default class Film extends Component {
   state = {
@@ -14,7 +15,7 @@ export default class Film extends Component {
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-    const response = await api.get("/films/" + id);
+    const response = await cineAPi.get("/films/" + id);
     const responseOmdb = await apiOmdb.get(
       this.state.apiKey + "&i=" + response.data.ApiCode
     );

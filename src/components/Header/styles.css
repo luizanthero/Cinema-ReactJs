@@ -9,9 +9,6 @@ header#main-header {
   align-items: center;
 }
 
-header#main-header .active {
-}
-
 header#main-header button {
   margin: 10px;
 }
