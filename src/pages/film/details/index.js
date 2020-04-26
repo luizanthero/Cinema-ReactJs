@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import "./styles.css";
-
 import cineAPi from "../../../services/CineApi";
 import apiOmdb from "../../../services/Omdb-Api";
 
@@ -26,7 +24,7 @@ export default class Film extends Component {
     const { film, filmOmdb } = this.state;
 
     return (
-      <div className="film-info">
+      <div className="show-box show-box-info">
         <h1>{film.Name}</h1>
 
         <img src={filmOmdb.Poster} alt={film.Name} title={film.Name} />
@@ -39,7 +37,9 @@ export default class Film extends Component {
         <p>Paises: {filmOmdb.Country}</p>
         <p>Prêmios: {filmOmdb.Awards}</p>
 
-        <Link to="/films">Voltar</Link>
+        <Link to="/films" className="button button-default button-back">
+          Voltar
+        </Link>
       </div>
     );
   }

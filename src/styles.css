@@ -10,3 +10,156 @@ body {
   background: #fafafa;
   color: #333;
 }
+
+.entity-list {
+  max-width: 700px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+}
+
+/*#region [Show Boxes]*/
+.show-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.show-box p {
+  font-size: 16px;
+  color: #999;
+  margin-top: 5px;
+  line-height: 24px;
+}
+
+.show-box-info {
+  max-width: 700px;
+  margin: 20px auto 0;
+}
+
+.show-box-info h1 {
+  font-size: 32px;
+}
+
+.show-box-info p {
+  color: #666;
+  line-height: 24px;
+  margin-top: 5px;
+}
+/*#endregion*/
+
+/*#region [Containers]*/
+.container-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*#endregion*/
+
+/*#region [Buttons]*/
+.button {
+  height: 42px;
+  width: 40%;
+  border-radius: 5px;
+  background: none;
+  margin: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.button-add {
+  width: auto;
+  margin-bottom: 20px;
+}
+
+.button-back {
+  width: auto;
+  margin-top: 20px;
+}
+/*#endregion*/
+
+/*#region [Buttons Colors]*/
+.button-default {
+  border: 2px solid #da552f;
+  color: #da552f;
+}
+
+.button-default:hover {
+  background: #da552f;
+  color: #fff;
+}
+
+.button-info {
+  border: 2px solid #4169e1;
+  color: #4169e1;
+}
+
+.button-info:hover {
+  background: #4169e1;
+  color: #fff;
+}
+
+.button-success {
+  border: 2px solid #3cb371;
+  color: #3cb371;
+}
+
+.button-success:hover {
+  background: #3cb371;
+  color: #fff;
+}
+
+.button-warning {
+  border: 2px solid #ff8c00;
+  color: #ff8c00;
+}
+
+.button-warning:hover {
+  background: #ff8c00;
+  color: #fff;
+}
+
+.button-danger {
+  border: 2px solid #ff0000;
+  color: #ff0000;
+}
+
+.button-danger:hover {
+  background: #ff0000;
+  color: #fff;
+}
+/*#endregion*/
+
+/*#region [Actions Pagination]*/
+.actions-pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.actions-pagination button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 0;
+  background: #da552f;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.actions-pagination button[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.actions-pagination button:hover:enabled {
+  opacity: 0.7;
+}
+/*#endregion */

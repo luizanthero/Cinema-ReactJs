@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import "./styles.css";
-
 import cineApi from "../../../services/CineApi";
 
 export default class Main extends Component {
@@ -48,20 +46,25 @@ export default class Main extends Component {
     const { films, filmInfo, page } = this.state;
 
     return (
-      <div className="film-list">
+      <div className="entity-list">
+        <Link className="button button-default button-add">
+          Adicionar novo Filme
+        </Link>
         {films.map((film) => (
-          <article key={film.id}>
+          <article key={film.id} className="show-box">
             <strong>{film.Name}</strong>
             <p>{film.ApiCode}</p>
 
-            <div className="film-buttons">
-              <Link to={"/films/" + film.id}>Acessar</Link>
-              <Link>Alterar</Link>
-              <Link>Excluir</Link>
+            <div className="container-buttons">
+              <Link to={"/films/" + film.id} className="button button-info">
+                Acessar
+              </Link>
+              <Link className="button button-success">Alterar</Link>
+              <Link className="button button-danger">Excluir</Link>
             </div>
           </article>
         ))}
-        <div className="actions">
+        <div className="actions-pagination">
           <button disabled={page === 1} onClick={this.prevPage}>
             Anterior
           </button>
