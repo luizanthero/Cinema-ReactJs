@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./styles.css";
 
-import cineApi from "../../services/CineApi";
+import cineApi from "../../../services/CineApi";
 
 export default class Main extends Component {
   state = {
@@ -54,7 +54,11 @@ export default class Main extends Component {
             <strong>{film.Name}</strong>
             <p>{film.ApiCode}</p>
 
-            <Link to={"/films/" + film.id}>Acessar</Link>
+            <div className="film-buttons">
+              <Link to={"/films/" + film.id}>Acessar</Link>
+              <Link>Alterar</Link>
+              <Link>Excluir</Link>
+            </div>
           </article>
         ))}
         <div className="actions">

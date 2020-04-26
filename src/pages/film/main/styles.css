@@ -19,12 +19,19 @@
   line-height: 24px;
 }
 
-.film-list article a {
+.film-list article div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.film-list article div a {
   height: 42px;
+  width: 40%;
   border-radius: 5px;
   border: 2px solid #da552f;
   background: none;
-  margin-top: 10px;
+  margin: 5px;
   color: #da552f;
   font-weight: bold;
   font-size: 16px;
@@ -35,7 +42,7 @@
   transition: all 0.2s;
 }
 
-.film-list article a:hover {
+.film-list article div a:hover {
   background: #da552f;
   color: #fff;
 }

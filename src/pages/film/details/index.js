@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 import "./styles.css";
 
-import cineAPi from "../../services/CineApi";
-import apiOmdb from "../../services/Omdb-Api";
+import cineAPi from "../../../services/CineApi";
+import apiOmdb from "../../../services/Omdb-Api";
 
 export default class Film extends Component {
   state = {
@@ -39,7 +39,7 @@ export default class Film extends Component {
         <p>Paises: {filmOmdb.Country}</p>
         <p>Prêmios: {filmOmdb.Awards}</p>
 
-        <Link to="/">Voltar</Link>
+        <Link to="/films">Voltar</Link>
       </div>
     );
   }

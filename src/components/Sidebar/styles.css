@@ -1,9 +1,8 @@
 ul#main-menu {
   width: 15%;
-  height: 100%;
   background: #da552f;
   overflow: hidden;
-  position: fixed;
+  position: absolute;
   z-index: 1;
 }
 
