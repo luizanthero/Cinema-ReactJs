@@ -15,7 +15,7 @@ export default class Main extends Component {
   }
 
   loadFilms = async (page = 1) => {
-    const response = await cineApi.get("/films/" + page + "/10");
+    const response = await cineApi.get("/films/pagination/" + page + "/10");
 
     const { data, ...filmInfo } = response.data;
 

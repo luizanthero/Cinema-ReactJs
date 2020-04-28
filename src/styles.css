@@ -27,6 +27,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
+}
+
+.film-search .button {
+  margin: 5px;
+  width: 10%;
 }
 
 .search[type="text"] {
@@ -39,7 +45,7 @@ body {
   background-position: 10px 10px;
   background-repeat: no-repeat;
   padding: 12px 20px 12px 40px;
-  margin-bottom: 30px;
+  margin: 5px;
 }
 
 /*#region [Show Boxes]*/
@@ -142,7 +148,7 @@ body {
 .show-box-film .film-info-short {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
@@ -162,6 +168,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.container-buttons strong {
+  margin-top: 30px;
+}
 /*#endregion*/
 
 /*#region [Buttons]*/
@@ -170,7 +180,9 @@ body {
   width: 40%;
   border-radius: 5px;
   background: none;
-  margin: 5px;
+  margin-top: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
   font-weight: bold;
   font-size: 16px;
   text-decoration: none;
@@ -178,6 +190,7 @@ body {
   justify-content: center;
   align-items: center;
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .button-add {

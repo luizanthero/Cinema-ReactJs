@@ -22,6 +22,17 @@ export default class Search extends Component {
     }
   };
 
+  handleChange = (event) => {
+    this.setState({ filmName: event.target.value });
+  };
+
+  searchFilm = () => {
+    const { filmName } = this.state;
+
+    this.setState({ filmOmdb: [] });
+    this.loadFilms(filmName);
+  };
+
   loadFilms = async (filmName, pageNumber = 1) => {
     const { result } = this.state;
 
@@ -31,7 +42,7 @@ export default class Search extends Component {
 
     this.setState({
       filmName: filmName,
-      filmOmdb: response.data.Search,
+      filmOmdb: await this.validationFilm(response.data.Search),
       lastPage: Math.round(response.data.totalResults / 10),
       result: response.data.Response,
       error: response.data.Error,
@@ -66,41 +77,63 @@ export default class Search extends Component {
     this.loadFilms(filmName, pageNumber);
   };
 
+  validationFilm = async (filmOmdb) => {
+    const promises = filmOmdb.map(async (film) => {
+      const response = await cineAPi.get(`/films/apiCode/${film.imdbID}`);
+      return { ...film, Actived: response.data };
+    });
+
+    return await Promise.all(promises);
+  };
+
   render() {
-    const { filmOmdb, page, lastPage, result, error } = this.state;
+    const { filmOmdb, page, lastPage, result, error, filmName } = this.state;
 
     return (
       <div className="film-list">
         <div className="film-search">
+          <Link to="/films" className="button button-default">
+            Voltar
+          </Link>
           <input
+            value={filmName}
             type="text"
-            name="search"
+            name="filmName"
             placeholder="Pesquisar..."
             className="search"
             onKeyDown={this.handleKeyEnter}
+            onChange={this.handleChange}
           />
+          <button className="button button-info" onClick={this.searchFilm}>
+            Pesquisar
+          </button>
         </div>
 
         <div className="show-film">
           {result && filmOmdb ? (
-            filmOmdb.map((film) => (
-              <div className="show-box-film">
-                <div>
-                  <strong>{film.Title}</strong>
+            filmOmdb.map((film) => {
+              return (
+                <div className="show-box-film" key={film.imdbID}>
+                  <div>
+                    <strong>{film.Title}</strong>
+                  </div>
+                  <div className="poster">
+                    <img src={film.Poster} alt={film.Name} title={film.Name} />
+                  </div>
+                  <div className="film-info-short">
+                    <p>Year: {film.Year}</p>
+                    <p>Tipo: {film.Type}</p>
+                  </div>
+                  <div className="container-buttons">
+                    {!film.Actived ? (
+                      <div className="button button-info">Adicionar</div>
+                    ) : (
+                      <strong>Filme já cadastrado!</strong>
+                    )}
+                  </div>
                 </div>
-                <div className="poster">
-                  <img src={film.Poster} alt={film.Name} title={film.Name} />
-                </div>
-                <div className="film-info-short">
-                  <p>{film.imdbID}</p>
-                  <p>Year: {film.Year}</p>
-                  <p>Tipo: {film.Type}</p>
-                </div>
-                <div className="container-buttons">
-                  <Link className="button button-info">Adicionar</Link>
-                </div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <strong>{error}</strong>
           )}
