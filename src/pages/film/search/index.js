@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 import cineAPi from "../../../services/CineApi";
 import apiOmdb from "../../../services/Omdb-Api";
@@ -13,6 +19,9 @@ export default class Search extends Component {
     result: false,
     error: "",
     page: 1,
+    openDialog: false,
+    dialogFilmName: "",
+    dialogFilmId: "",
   };
 
   handleKeyEnter = (event) => {
@@ -86,8 +95,43 @@ export default class Search extends Component {
     return await Promise.all(promises);
   };
 
+  addFilm = async (name, apiCode) => {
+    const film = {
+      Name: name,
+      ApiCode: apiCode,
+    };
+
+    const request = await cineAPi.post("/films", film);
+
+    if (request && request.status === 200) {
+      this.setState({ openDialog: false });
+      this.loadFilms(this.state.filmName, this.state.page);
+    }
+  };
+
+  handleClickOpenDialog = (name, id) => {
+    this.setState({
+      openDialog: true,
+      dialogFilmName: name,
+      dialogFilmId: id,
+    });
+  };
+
+  handleCloseDialog = () => {
+    this.setState({ openDialog: false });
+  };
+
   render() {
-    const { filmOmdb, page, lastPage, result, error, filmName } = this.state;
+    const {
+      filmOmdb,
+      page,
+      lastPage,
+      result,
+      error,
+      filmName,
+      dialogFilmName,
+      dialogFilmId,
+    } = this.state;
 
     return (
       <div className="film-list">
@@ -126,7 +170,14 @@ export default class Search extends Component {
                   </div>
                   <div className="container-buttons">
                     {!film.Actived ? (
-                      <div className="button button-info">Adicionar</div>
+                      <div
+                        className="button button-info"
+                        onClick={() =>
+                          this.handleClickOpenDialog(film.Title, film.imdbID)
+                        }
+                      >
+                        Adicionar
+                      </div>
                     ) : (
                       <strong>Filme já cadastrado!</strong>
                     )}
@@ -150,6 +201,34 @@ export default class Search extends Component {
             Próximo
           </button>
         </div>
+
+        <Dialog
+          open={this.state.openDialog}
+          onClose={this.handleCloseDialog}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {`Adicionar ${dialogFilmName}?`}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Vamos adicionar o filme '{dialogFilmName} ({dialogFilmId})'
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleCloseDialog} color="primary">
+              Cancelar
+            </Button>
+            <Button
+              onClick={() => this.addFilm(dialogFilmName, dialogFilmId)}
+              color="primary"
+              autoFocus
+            >
+              Adicionar
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }
